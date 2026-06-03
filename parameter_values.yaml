@@ -1,0 +1,4 @@
+parameterDefinitions:
+  - name: CondaPackages
+    type: STRING
+    default: "python=3.11 numpy pandas"
