@@ -1,0 +1,32 @@
+specificationVersion: jobtemplate-2023-09
+
+name: CondaShellScript
+
+parameterDefinitions:
+  - name: CondaPackages
+    type: STRING
+    default: "python=3.11"
+
+steps:
+  - name: RunShellScript
+
+    hostRequirements:
+      attributes: []
+
+    script:
+      actions:
+        onRun:
+          command: bash
+          args:
+            - "{{Task.File.RunScript}}"
+
+      embeddedFiles:
+        - name: RunScript
+          type: TEXT
+          runnable: true
+          data: |
+            #!/bin/bash
+
+            echo "Conda environment aktif"
+
+            bash scripts/run.sh
